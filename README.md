@@ -696,7 +696,9 @@ Skills 安装到 `.claude/skills/` 后，Cursor 启动时会自动发现并提�
 
 | Skill 名称 | 来源 | 功能简述 |
 |------------|------|----------|
-| **20-ml-paper-writing** | [AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) | 面向 NeurIPS / ICML / ICLR / ACL / AAAI / COLM 的完整论文写作：从 repo 起稿、LaTeX 模板、引用验证、审稿人视角、会议 checklist、格式迁移；内含 booktabs 表格规范与图规范（矢量图、caption、色盲友好等）。 |
+| **20-ml-paper-writing** | [zechenzhangAGI/AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) | 面向 NeurIPS / ICML / ICLR / ACL / AAAI / COLM 的完整论文写作：从 repo 起稿、LaTeX 模板、引用验证、审稿人视角、会议 checklist、格式迁移；内含 booktabs 表格规范与图规范（矢量图、caption、色盲友好等）。 |
+| **humanizer** | [blader/humanizer](https://github.com/blader/humanizer) | 识别并去除 AI 写作痕迹，使文本更自然、像人写。基于 Wikipedia「Signs of AI writing」：过度强调意义、促销腔、空洞 -ing 分析、模糊归因、破折号滥用、三点式堆砌、AI 高频词、否定式平行等；同时注入「人味」：有观点、节奏变化、承认不确定性、适当用「我」。适合润色后终稿或投稿前语言风格检查。 |
+| **docx** | [anthropics/skills](https://github.com/anthropics/skills) | 对 .docx 进行创建、编辑、分析。支持：用 pandoc 转 Markdown 读正文；用 Document 库/OOXML 编辑已有文档；Redlining 流程做带修订痕迹的审稿式修改。**论文场景**：给定期刊/会议的 Word 投稿模板，在模板中替换标题、作者、摘要、正文等占位内容，生成符合格式的投稿稿；也可对他人文档做修订建议（tracked changes）。 |
 | **doc-coauthoring** | [anthropics/skills](https://github.com/anthropics/skills) | 分阶段文档协作：收集上下文与澄清问题 → 按节头脑风暴→起草→精修 → 读者测试查盲点。适用于论文单节或整篇的结构化迭代。 |
 | **canvas-design** | [anthropics/skills](https://github.com/anthropics/skills) | 先产出 design philosophy (.md)，再在画布上实现为单页 .png / .pdf，适合论文中的概念图、示意图、框架图。 |
 
@@ -717,5 +719,8 @@ Skills 安装到 `.claude/skills/` 后，Cursor 启动时会自动发现并提�
 | Stage 3：读者测试 | doc-coauthoring | 稿子基本定稿 | 「做一下读者测试」「用新会话试几个读者问题」 | 读者视角下的不清/易误解处 + 修改建议；可按需改稿 |
 | 论文概念图 / 示意图 / 框架图 | canvas-design | 图的用途与大致元素（如三阶段 pipeline、方法对比） | 「帮我画一个我们方法的整体框架图，三块：数据、训练、推理」「做一张方法对比的示意图，左边传统方法，右边我们的」 | design philosophy (.md) + 可下载的 .pdf 或 .png，可插入 LaTeX 并配合 20-ml-paper-writing 写 caption |
 | 改图的风格或细节 | canvas-design | 对已有图的修改意见 | 「背景改成浅灰」「左边块加大一点」「不要那么多字，只保留标签」 | 按意见调整后的新版图说明，再导出 .pdf/.png 供替换进论文 |
+| 去 AI 味 / 润色后终稿检查 | humanizer | 待检查的段落或全文（LaTeX 片段、Word 正文、Markdown 等） | 「这段读起来像 AI 写的，帮我 humanize」「投稿前帮我把 Abstract 和 Introduction 去一下 AI 味」 | 重写后的自然文本 + 可选修改说明；保留原意与语气，减少显著性堆砌、破折号滥用、三点式、AI 高频词等 |
+| 用 Word 模板写投稿稿 | docx | 期刊/会议提供的 .docx 投稿模板；你的标题、作者、摘要、各节正文 | 「这是某期刊的 Word 模板，帮我把我的标题、摘要和正文填进去」「在模板里替换作者信息和 Section 1–4 的内容」 | 符合模板格式的 .docx 稿（可先解包再脚本替换占位内容，或按 OOXML 编辑后重新打包） |
+| 对 Word 稿做修订建议 | docx | 已写好的 .docx 论文或审稿意见 | 「按 redlining 流程，帮我在文档里标出需要改的几处」「把这段改成 tracked changes：原文删除、新文插入」 | 带修订痕迹的 .docx（仅标记改动处，便于作者接受/拒绝） |
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Leey21/awesome-ai-research-writing&type=Date)](https://star-history.com/#Leey21/awesome-ai-research-writing&Date)
