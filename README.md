@@ -634,7 +634,7 @@ Highlight the core novelty. Ensure the connection logic makes sense."""
 ---
 
 ## 模型选择
-我们从公开网站 [arena.ai](https://arena.ai/zh/leaderboard/text/creative-writing) 上获取了排名前10的模型+具体版本，该榜单结果与调研群体的日常使用选择高度契合。在科研场景中，日常的 idea 交互与论文写作工作，主力模型仍为 Gemini-3-pro/flash；在实验代码编写场景下，更多使用 Claude-4.5 系列模型，以及 Cursor 内置的 Composer 模型。此外，从实际体验来看，GPT 5.1 与 GPT 5.2 的表现较为一般，目前对gpt系列模型的使用频率已大幅下降。
+我们从公开网站 [arena.ai](https://arena.ai/zh/leaderboard/text/creative-writing) 上获取了Creative Writing能力排名前10的模型与具体版本，该榜单结果与调研群体的日常使用选择高度契合。在科研场景中，日常的 idea 交互与论文写作，主力模型仍为 Gemini-3-pro/flash；在实验代码编写场景下，更多使用 Claude-4.5 系列模型，以及 Cursor 内置的 Composer 模型。此外，从实际体验来看，GPT 5.1 与 GPT 5.2 的表现较为一般，目前对gpt系列模型的使用频率已大幅下降。
 
 ![模型排名](images/model-rank.png)
 
