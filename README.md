@@ -25,22 +25,33 @@
 ## 📑 目录 (Table of Contents)
 
 ### Part I: 写作 Prompt 集合
-- [中转英](#中转英)
-- [英转中](#英转中)
-- [中转中](#中转中)
-- [缩写](#缩写)
-- [扩写](#扩写)
-- [表达润色（英文论文）](#表达润色英文论文)
-- [表达润色（中文论文）](#表达润色中文论文)
-- [逻辑检查](#逻辑检查)
-- [去 AI 味](#去-ai-味)
-- [论文架构图](#论文架构图)
-- [实验绘图推荐](#实验绘图推荐)
-- [生成图的标题](#生成图的标题)
-- [生成表的标题](#生成表的标题)
-- [实验分析](#实验分析)
-- [论文整体以 Reviewer 视角进行审视](#论文整体以-reviewer-视角进行审视)
-- [模型选择](#模型选择)
+- [Part I: 写作 Prompt 集合](#part-i-写作-prompt-集合-1)
+  - [中转英](#中转英)
+  - [英转中](#英转中)
+  - [中转中](#中转中)
+  - [缩写](#缩写)
+  - [扩写](#扩写)
+  - [表达润色（英文论文）](#表达润色英文论文)
+  - [表达润色（中文论文）](#表达润色中文论文)
+  - [逻辑检查](#逻辑检查)
+  - [去 AI 味](#去-ai-味)
+  - [论文架构图](#论文架构图)
+  - [实验绘图推荐](#实验绘图推荐)
+  - [生成图的标题](#生成图的标题)
+  - [生成表的标题](#生成表的标题)
+  - [实验分析](#实验分析)
+  - [问题阐述图](#问题阐述图)
+  - [相关工作撰写](#相关工作撰写)
+  - [论文整体以 Reviewer 视角进行审视](#论文整体以-reviewer-视角进行审视)
+  - [模型选择](#模型选择)
+- [Part II: 论文写作相关的 Agent-Skills](#part-ii-论文写作相关的-agent-skills)
+  - [Skills 的配置](#skills-的配置)
+    - [1) 前置依赖](#1-前置依赖)
+    - [2) 安装/运行 OpenSkills](#2-安装运行-openskills)
+    - [3) 一键安装 Skills](#3-一键安装-skills)
+    - [4) 在 Cursor 中查看与使用 Skills](#4-在-cursor-中查看与使用-skills)
+  - [Skills 总览](#skills-总览)
+  - [使用场景与示例 Prompt](#使用场景与示例-prompt)
 
 ### Part II: 论文写作相关的 Skills
 - [Skills 的配置](#skills-的配置)
@@ -668,6 +679,103 @@ Highlight the core novelty. Ensure the connection logic makes sense."""
 
 ---
 
+## 问题阐述图
+
+````markdown
+# Role
+你是一位世界顶尖的学术插画专家，专注于为计算机视觉与人工智能领域的顶级会议（如 CVPR, NeurIPS, ICLR）绘制高质量、直观且美观的论文架构图。
+
+# Task
+请阅读我提供的【相关工作部分】以及之前发给你的论文，首先深刻理解该领域要解决的任务，发现任务中需要解决的 Technical Challenge、Failure Cases。然后，基于你的理解，设计并绘制一张专业的问题介绍图，作为论文中【引言/相关工作】的介绍图。
+
+# Visual Constraints
+1. 风格基调：
+   - 必须具备顶会论文风格：专业、干净、现代、极简主义。
+   - 核心美学：采用扁平化矢量插画风格，线条简洁，参考 DeepMind 或 OpenAI 论文中的图表美学。
+   - 拒绝卡通感、油画感或过度艺术化，保持严谨的学术图表美学。
+   - 背景必须是纯白色，无任何纹理或阴影。
+
+2. 色彩体系：
+   - 严格使用淡色系或柔和色调。
+   - 严禁使用过于鲜艳饱和的颜色（如大红大绿）或过于暗淡沉重的颜色。利用颜色的深浅变化来区分不同的模块类型。
+
+3. 内容与布局：
+   - 将理解到的问题和现状转化为清晰的模块和数据流箭头。
+   - 适当使用现代、简洁的矢量图标嵌入到模块中，以增强直观性。
+
+4. 文字规范：
+   - 图中所有文字必须使用中文。
+   - 你必须为问题解释中提到的关键模块或方程式添加清晰易读的文本标签。
+   - 严禁在图中出现长句子、描述性段落或复杂的公式。文字是用来说明模块身份的，不是用来解释原理的。
+
+5. 禁止事项：
+   - 不允许使用逼真照片感。
+   - 不允许杂乱的草图线条。
+   - 不允许难以辨认的文本。
+   - 不允许廉价的 3D 阴影瑕疵。
+
+# Input Methodology
+[在此处粘贴你的相关工作的描述部分]
+````
+
+---
+
+## 相关工作撰写
+
+````markdown
+# Role
+你是一位世界顶尖的学术论文写作专家，专注于计算机视觉与人工智能领域的顶级会议（如 CVPR, NeurIPS, ICLR）论文撰写。你熟读【不可学习样本/机器遗忘】领域近几年的代表性工作，能够精准把握该领域的研究脉络、技术挑战与前沿动态。
+
+# Task
+我将为你提供以下两类材料：
+1. **已完成的论文 `.tex` 文件**：包含我们方法的详细描述（Method 部分）与实验结果（Experiment 部分），请仔细阅读以深刻理解我们算法的核心设计、技术细节与实验表现；
+2. **相关论文与研究背景材料**：用于帮助你理解该领域的研究现状与已有方法。
+
+请基于以上材料，深刻理解以下内容：
+1. 该领域问题的核心定义与研究意义；
+2. 国内外研究现状与主流方法的演进脉络；
+3. 现有方法的 Technical Challenges 与 Failure Cases；
+4. 我们的算法所针对的核心问题，以及如何从现有研究自然引出我们的方法；
+5. 我们算法相较于现有工作的核心优势与贡献。
+
+基于以上理解，请撰写一篇高质量的论文【引言（Introduction）】与【相关工作（Related Work）】部分。
+
+# Writing Constraints
+1. 行文风格：
+   - 必须符合顶会论文标准：逻辑严密、表达简洁、学术规范。
+   - 语言风格参考 CVPR/NeurIPS 顶会论文，避免口语化、冗余表达或过度堆砌形容词。
+   - 使用第三人称客观视角，全程英文撰写。
+
+2. 结构规范：
+   - **引言部分**需包含：研究背景与动机 → 现有方法局限性 → 我们方法的核心思路与贡献 → 论文结构概述。
+   - **相关工作部分**需按研究方向分组综述，每组需有清晰的主题句，并在结尾自然过渡至我们工作的差异与优势。
+
+3. 引用规范：
+   - 引用格式使用 `\cite{}` LaTeX 标准格式。
+   - 每个重要论断须有对应文献支撑，避免无引用的主观断言。
+   - 引用的 citation key 请直接沿用 `.tex` 文件中已有的 `\cite{}` 格式，保持一致性。
+
+4. 内容要求：
+   - 引言中必须清晰点出现有方法的 1-3 个核心局限性，并将其作为我们工作的出发点。
+   - 相关工作综述需覆盖该领域主流方向，客观评价已有方法，避免过度贬低或无依据的批评。
+   - contributions 部分需条目清晰，动词开头，突出我们工作的新颖性。
+   - 引言与相关工作的内容需与 `.tex` 文件中的方法和实验描述保持高度一致，不得出现与已有内容相矛盾的表述。
+
+5. 禁止事项：
+   - 不允许出现与提供材料不符的编造内容或虚假引用。
+   - 不允许使用模糊、空洞的套话（如 "extensive experiments show..."）作为核心论据。
+   - 不允许结构混乱、段落之间缺乏逻辑过渡。
+
+# Input Materials
+请在发送此 prompt 时，同时上传以下材料：
+- 📄 **论文 `.tex` 文件**（包含 Method 与 Experiment 部分）
+- 📚 **相关工作材料**（可以是论文 PDF、摘要文本，或你整理的研究现状描述）
+
+[如有补充说明，可在此处粘贴额外的算法描述或背景信息]
+````
+
+---
+
 ## 论文整体以 Reviewer 视角进行审视
 
 ````markdown
@@ -783,33 +891,33 @@ Skills 安装到 `.claude/skills/` 后，Cursor 启动时会自动发现并提�
 
 ## Skills 总览
 
-| Skill 名称 | 来源 | 功能简述 |
-|------------|------|----------|
-| **20-ml-paper-writing** | [zechenzhangAGI/AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) | 面向 NeurIPS / ICML / ICLR / ACL / AAAI / COLM 的完整论文写作：从 repo 起稿、LaTeX 模板、引用验证、审稿人视角、会议 checklist、格式迁移；内含 booktabs 表格规范与图规范（矢量图、caption、色盲友好等）。 |
-| **humanizer** | [blader/humanizer](https://github.com/blader/humanizer) | 识别并去除 AI 写作痕迹，使文本更自然、像人写。基于 Wikipedia「Signs of AI writing」：过度强调意义、促销腔、空洞 -ing 分析、模糊归因、破折号滥用、三点式堆砌、AI 高频词、否定式平行等；同时注入「人味」：有观点、节奏变化、承认不确定性、适当用「我」。适合润色后终稿或投稿前语言风格检查。 |
-| **docx** | [anthropics/skills](https://github.com/anthropics/skills) | 对 .docx 进行创建、编辑、分析。支持：用 pandoc 转 Markdown 读正文；用 Document 库/OOXML 编辑已有文档；Redlining 流程做带修订痕迹的审稿式修改。**论文场景**：给定期刊/会议的 Word 投稿模板，在模板中替换标题、作者、摘要、正文等占位内容，生成符合格式的投稿稿；也可对他人文档做修订建议（tracked changes）。 |
-| **doc-coauthoring** | [anthropics/skills](https://github.com/anthropics/skills) | 分阶段文档协作：收集上下文与澄清问题 → 按节头脑风暴→起草→精修 → 读者测试查盲点。适用于论文单节或整篇的结构化迭代。 |
-| **canvas-design** | [anthropics/skills](https://github.com/anthropics/skills) | 先产出 design philosophy (.md)，再在画布上实现为单页 .png / .pdf，适合论文中的概念图、示意图、框架图。 |
+| Skill 名称              | 来源                                                                                      | 功能简述                                                                                                                                                                                                                                                                                                     |
+| ----------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **20-ml-paper-writing** | [zechenzhangAGI/AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) | 面向 NeurIPS / ICML / ICLR / ACL / AAAI / COLM 的完整论文写作：从 repo 起稿、LaTeX 模板、引用验证、审稿人视角、会议 checklist、格式迁移；内含 booktabs 表格规范与图规范（矢量图、caption、色盲友好等）。                                                                                                     |
+| **humanizer**           | [blader/humanizer](https://github.com/blader/humanizer)                                   | 识别并去除 AI 写作痕迹，使文本更自然、像人写。基于 Wikipedia「Signs of AI writing」：过度强调意义、促销腔、空洞 -ing 分析、模糊归因、破折号滥用、三点式堆砌、AI 高频词、否定式平行等；同时注入「人味」：有观点、节奏变化、承认不确定性、适当用「我」。适合润色后终稿或投稿前语言风格检查。                   |
+| **docx**                | [anthropics/skills](https://github.com/anthropics/skills)                                 | 对 .docx 进行创建、编辑、分析。支持：用 pandoc 转 Markdown 读正文；用 Document 库/OOXML 编辑已有文档；Redlining 流程做带修订痕迹的审稿式修改。**论文场景**：给定期刊/会议的 Word 投稿模板，在模板中替换标题、作者、摘要、正文等占位内容，生成符合格式的投稿稿；也可对他人文档做修订建议（tracked changes）。 |
+| **doc-coauthoring**     | [anthropics/skills](https://github.com/anthropics/skills)                                 | 分阶段文档协作：收集上下文与澄清问题 → 按节头脑风暴→起草→精修 → 读者测试查盲点。适用于论文单节或整篇的结构化迭代。                                                                                                                                                                                           |
+| **canvas-design**       | [anthropics/skills](https://github.com/anthropics/skills)                                 | 先产出 design philosophy (.md)，再在画布上实现为单页 .png / .pdf，适合论文中的概念图、示意图、框架图。                                                                                                                                                                                                       |
 
 ## 使用场景与示例 Prompt
 
-| 使用场景 | 推荐 Skill | 前置输入 | 示例 Prompt | 产出 |
-|----------|------------|----------|-------------|----------|
-| 从零写一篇论文 | 20-ml-paper-writing | 研究 repo 路径或关键文件（README、results、笔记）+ 目标会议 | 「用这个 repo 帮我写一篇投 NeurIPS 的论文」「根据 results/ 里的实验，起草一篇 ICML 的稿子」 | 一句式贡献确认后，按 Abstract→Introduction→Methods→Experiments→Related Work→Limitations 的完整初稿 |
-| 用会议模板开新稿 | 20-ml-paper-writing | 目标会议 + 论文目录存放路径 | 「帮我用 ICLR 2026 模板新建一篇论文」「用 NeurIPS 2025 模板，项目放在当前目录」 | 拷贝完整模板目录并写好标题、作者占位、章节骨架 |
-| 加引用 / 写 Related Work | 20-ml-paper-writing | 要引用的主题或关键词（如「RLHF 对齐」），或希望被引用的表述 | 「帮我找并引用 2023 年后 RLHF 的几篇代表作」「Related Work 里需要 cite Vaswani 的 attention，帮我查准并给 BibTeX」 | 经检索/API 核实的 BibTeX；无法核实的标为 [CITATION NEEDED] 或 placeholder，需用户自行核对 |
-| 换会议 / 改投别家 | 20-ml-paper-writing | 当前稿子会议格式、目标会议、.tex 或项目路径 | 「这篇稿子要从 NeurIPS 改成 ICML，帮我做格式迁移」「把 main.tex 迁到 ICLR 2026 模板里，页数限制 9 页」 | 新会议模板下的稿子（仅迁移正文与图表）+ 页数、Broader Impact / Limitations 等提醒 |
-| 投稿前清单核对 | 20-ml-paper-writing | 无 | 「帮我对一下 NeurIPS 的 paper checklist」「交稿前帮我看一遍 ICML 的要求」 | 按该会议要求的逐项核对（匿名、页数、图表、引用、伦理等），并标出缺失或需修改项 |
-| 写 / 改 LaTeX 表格 | 20-ml-paper-writing | 方法名、指标名、数值（或简单列表/CSV） | 「帮我把下面结果做成论文里的表格：Method A 准确率 85.2，Method B 92.1…」「用 booktabs 风格，加 ↑↓ 标注指标方向」 | 可直接粘贴进 .tex 的 `\begin{table}...\end{table}` 代码（含 \toprule/\midrule/\bottomrule、最佳值加粗、数值右对齐等） |
-| 图与 caption 规范 | 20-ml-paper-writing | 图或图的描述 | 「帮我写 Figure 1 的 caption，要求包含 xxx」「这张图要符合顶会要求，检查图内标题、色盲友好」 | 符合规范的 caption 文案 + 矢量图/线型等修改建议 |
-| 结构化流程写某一节 | doc-coauthoring | 无（进入流程后按提示提供上下文） | 「用 doc coauthoring 流程，我们先写 Introduction」「我想用协作流程写这篇论文的 Methods」 | 三阶段说明（收集上下文→分节起草→读者测试），同意后进入 Stage 1 |
-| Stage 1：提供上下文 | doc-coauthoring | 文档类型、读者、目标效果、模板等；repo、主要结论、不确定点、笔记、目标会议（可零散提供） | 「投 ICLR，读者是审稿人」「主要贡献是 X，但 Related Work 还没想好怎么划界」「实验在 results/，README 里有总结」 | 5～10 个澄清问题（如贡献侧重、必放结果），回答后进入 Stage 2 |
-| Stage 2：按节起草与修改 | doc-coauthoring | 选定一节；对要点勾选保留/合并/删，对正文用简短指令改 | 「保留 1、4、7，删 3」「这段太长了，压缩成三句」「加一句和 Figure 1 的对应」 | 该节更新版，循环至满意后换下一节 |
-| Stage 3：读者测试 | doc-coauthoring | 稿子基本定稿 | 「做一下读者测试」「用新会话试几个读者问题」 | 读者视角下的不清/易误解处 + 修改建议；可按需改稿 |
-| 论文概念图 / 示意图 / 框架图 | canvas-design | 图的用途与大致元素（如三阶段 pipeline、方法对比） | 「帮我画一个我们方法的整体框架图，三块：数据、训练、推理」「做一张方法对比的示意图，左边传统方法，右边我们的」 | design philosophy (.md) + 可下载的 .pdf 或 .png，可插入 LaTeX 并配合 20-ml-paper-writing 写 caption |
-| 改图的风格或细节 | canvas-design | 对已有图的修改意见 | 「背景改成浅灰」「左边块加大一点」「不要那么多字，只保留标签」 | 按意见调整后的新版图说明，再导出 .pdf/.png 供替换进论文 |
-| 去 AI 味 / 润色后终稿检查 | humanizer | 待检查的段落或全文（LaTeX 片段、Word 正文、Markdown 等） | 「这段读起来像 AI 写的，帮我 humanize」「投稿前帮我把 Abstract 和 Introduction 去一下 AI 味」 | 重写后的自然文本 + 可选修改说明；保留原意与语气，减少显著性堆砌、破折号滥用、三点式、AI 高频词等 |
-| 用 Word 模板写投稿稿 | docx | 期刊/会议提供的 .docx 投稿模板；你的标题、作者、摘要、各节正文 | 「这是某期刊的 Word 模板，帮我把我的标题、摘要和正文填进去」「在模板里替换作者信息和 Section 1–4 的内容」 | 符合模板格式的 .docx 稿（可先解包再脚本替换占位内容，或按 OOXML 编辑后重新打包） |
-| 对 Word 稿做修订建议 | docx | 已写好的 .docx 论文或审稿意见 | 「按 redlining 流程，帮我在文档里标出需要改的几处」「把这段改成 tracked changes：原文删除、新文插入」 | 带修订痕迹的 .docx（仅标记改动处，便于作者接受/拒绝） |
+| 使用场景                     | 推荐 Skill          | 前置输入                                                                                 | 示例 Prompt                                                                                                        | 产出                                                                                                                  |
+| ---------------------------- | ------------------- | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| 从零写一篇论文               | 20-ml-paper-writing | 研究 repo 路径或关键文件（README、results、笔记）+ 目标会议                              | 「用这个 repo 帮我写一篇投 NeurIPS 的论文」「根据 results/ 里的实验，起草一篇 ICML 的稿子」                        | 一句式贡献确认后，按 Abstract→Introduction→Methods→Experiments→Related Work→Limitations 的完整初稿                    |
+| 用会议模板开新稿             | 20-ml-paper-writing | 目标会议 + 论文目录存放路径                                                              | 「帮我用 ICLR 2026 模板新建一篇论文」「用 NeurIPS 2025 模板，项目放在当前目录」                                    | 拷贝完整模板目录并写好标题、作者占位、章节骨架                                                                        |
+| 加引用 / 写 Related Work     | 20-ml-paper-writing | 要引用的主题或关键词（如「RLHF 对齐」），或希望被引用的表述                              | 「帮我找并引用 2023 年后 RLHF 的几篇代表作」「Related Work 里需要 cite Vaswani 的 attention，帮我查准并给 BibTeX」 | 经检索/API 核实的 BibTeX；无法核实的标为 [CITATION NEEDED] 或 placeholder，需用户自行核对                             |
+| 换会议 / 改投别家            | 20-ml-paper-writing | 当前稿子会议格式、目标会议、.tex 或项目路径                                              | 「这篇稿子要从 NeurIPS 改成 ICML，帮我做格式迁移」「把 main.tex 迁到 ICLR 2026 模板里，页数限制 9 页」             | 新会议模板下的稿子（仅迁移正文与图表）+ 页数、Broader Impact / Limitations 等提醒                                     |
+| 投稿前清单核对               | 20-ml-paper-writing | 无                                                                                       | 「帮我对一下 NeurIPS 的 paper checklist」「交稿前帮我看一遍 ICML 的要求」                                          | 按该会议要求的逐项核对（匿名、页数、图表、引用、伦理等），并标出缺失或需修改项                                        |
+| 写 / 改 LaTeX 表格           | 20-ml-paper-writing | 方法名、指标名、数值（或简单列表/CSV）                                                   | 「帮我把下面结果做成论文里的表格：Method A 准确率 85.2，Method B 92.1…」「用 booktabs 风格，加 ↑↓ 标注指标方向」   | 可直接粘贴进 .tex 的 `\begin{table}...\end{table}` 代码（含 \toprule/\midrule/\bottomrule、最佳值加粗、数值右对齐等） |
+| 图与 caption 规范            | 20-ml-paper-writing | 图或图的描述                                                                             | 「帮我写 Figure 1 的 caption，要求包含 xxx」「这张图要符合顶会要求，检查图内标题、色盲友好」                       | 符合规范的 caption 文案 + 矢量图/线型等修改建议                                                                       |
+| 结构化流程写某一节           | doc-coauthoring     | 无（进入流程后按提示提供上下文）                                                         | 「用 doc coauthoring 流程，我们先写 Introduction」「我想用协作流程写这篇论文的 Methods」                           | 三阶段说明（收集上下文→分节起草→读者测试），同意后进入 Stage 1                                                        |
+| Stage 1：提供上下文          | doc-coauthoring     | 文档类型、读者、目标效果、模板等；repo、主要结论、不确定点、笔记、目标会议（可零散提供） | 「投 ICLR，读者是审稿人」「主要贡献是 X，但 Related Work 还没想好怎么划界」「实验在 results/，README 里有总结」    | 5～10 个澄清问题（如贡献侧重、必放结果），回答后进入 Stage 2                                                          |
+| Stage 2：按节起草与修改      | doc-coauthoring     | 选定一节；对要点勾选保留/合并/删，对正文用简短指令改                                     | 「保留 1、4、7，删 3」「这段太长了，压缩成三句」「加一句和 Figure 1 的对应」                                       | 该节更新版，循环至满意后换下一节                                                                                      |
+| Stage 3：读者测试            | doc-coauthoring     | 稿子基本定稿                                                                             | 「做一下读者测试」「用新会话试几个读者问题」                                                                       | 读者视角下的不清/易误解处 + 修改建议；可按需改稿                                                                      |
+| 论文概念图 / 示意图 / 框架图 | canvas-design       | 图的用途与大致元素（如三阶段 pipeline、方法对比）                                        | 「帮我画一个我们方法的整体框架图，三块：数据、训练、推理」「做一张方法对比的示意图，左边传统方法，右边我们的」     | design philosophy (.md) + 可下载的 .pdf 或 .png，可插入 LaTeX 并配合 20-ml-paper-writing 写 caption                   |
+| 改图的风格或细节             | canvas-design       | 对已有图的修改意见                                                                       | 「背景改成浅灰」「左边块加大一点」「不要那么多字，只保留标签」                                                     | 按意见调整后的新版图说明，再导出 .pdf/.png 供替换进论文                                                               |
+| 去 AI 味 / 润色后终稿检查    | humanizer           | 待检查的段落或全文（LaTeX 片段、Word 正文、Markdown 等）                                 | 「这段读起来像 AI 写的，帮我 humanize」「投稿前帮我把 Abstract 和 Introduction 去一下 AI 味」                      | 重写后的自然文本 + 可选修改说明；保留原意与语气，减少显著性堆砌、破折号滥用、三点式、AI 高频词等                      |
+| 用 Word 模板写投稿稿         | docx                | 期刊/会议提供的 .docx 投稿模板；你的标题、作者、摘要、各节正文                           | 「这是某期刊的 Word 模板，帮我把我的标题、摘要和正文填进去」「在模板里替换作者信息和 Section 1–4 的内容」          | 符合模板格式的 .docx 稿（可先解包再脚本替换占位内容，或按 OOXML 编辑后重新打包）                                      |
+| 对 Word 稿做修订建议         | docx                | 已写好的 .docx 论文或审稿意见                                                            | 「按 redlining 流程，帮我在文档里标出需要改的几处」「把这段改成 tracked changes：原文删除、新文插入」              | 带修订痕迹的 .docx（仅标记改动处，便于作者接受/拒绝）                                                                 |
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Leey21/awesome-ai-research-writing&type=Date)](https://star-history.com/#Leey21/awesome-ai-research-writing&Date)
